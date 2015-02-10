@@ -69,7 +69,7 @@ void DS3231RTC::init() {
     writeRegister(DS3231_CONTROL, 0x1C);    // 0b0001 1100
 }
 
-void DS3231RTC::enSQWOUT(uint8_t val, boolean enBBSQW) {
+void DS3231RTC::enSQWOUT(uint8_t val, bool enBBSQW) {
     uint8_t control = readRegister(DS3231_CONTROL);
     control &= ~(1 << DS3231_C_INTCH);    // INTCH位 清0
 
@@ -172,13 +172,13 @@ void DS3231RTC::waitConvertTemperature() {
     labConvert:
         delay(50);
         ct = readRegister(DS3231_CONTROL);
-        boolean temp = (ct >> 5) & 1;
+        bool temp = (ct >> 5) & 1;
         if(temp)
             goto labConvert;
 }
 
 
-float DS3231RTC::getTemperature(boolean force) {
+float DS3231RTC::getTemperature(bool force) {
     if(force)
         waitConvertTemperature();
     uint8_t th = readRegister(DS3231_TMP_MSB);
