@@ -84,7 +84,7 @@ class DS3231RTC {
 		* val 0 = 1Hz, 1 = 1.024kHz, 4 = 4.096 kHz, 8 = 8.192 kHz
 		* enBBSQW 为 true 时 掉电也输出 SQW
 		**/
-		void enSQWOUT(uint8_t val, boolean enBBSQW);
+		void enSQWOUT(uint8_t val, bool enBBSQW);
 
 		/* 启用闹铃 1 中断 */
 		void enAlarm1Interrupt(uint8_t hour, uint8_t min);
@@ -102,7 +102,7 @@ class DS3231RTC {
 		* force 参数如果为 true ,代表强制转换温度, 大约 120ms时间, 为 false 直接从寄存器中获取
 		* 
 		**/
-		float getTemperature(boolean force);
+		float getTemperature(bool force);
 
 	private:
 		void waitConvertTemperature();
